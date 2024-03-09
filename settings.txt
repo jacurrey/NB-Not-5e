@@ -1,85 +1,145 @@
-﻿# folder główny train sim
+debugOutput = true                      /// leave at top for expanded logging
+//
+///////////////////////  Route and UI Startup
+//  gameRoot = ""                        // your ORTS Content drive and folder
+//  routeName = ""                       // add route name to skip menu
+//  startTileX = ""                      // optional start location
+//  startTileY = ""                      // optional start location
+//  markerLines = true                   // Show markers when loaded
+  loadAllWFiles = false                // Loads entire world to check errors
+//  toolsHidden = false                  //
+  usenNumPad = true                    // 
+  tileLod = 1                          // tiles in each direction to load
+                                         // loading 2+ can be memory heavy
+  objectLod = 4000                     // 2000 is plenty for most purposes
+  maxObjLag = 10                       //
+  allowObjLag = 1000                   //
+  cameraFov = 35                       //
+  oglDefaultLineWidth = 1              // width of standard lines 
 
-#gameRoot = F:/train simulator
-gameRoot = C:/ts
-#gameRoot = C:/tsb
-#gameRoot = F:/tst
-#gameRoot = F:/fdg/tsd3
-# nazwa trasy (folderu) do wczytania
+  ignoreMissingGlobalShapes = true     // false shows only track/road shapes present in Global\Shapes
+  useQuadTree = true
+  numRecentItems = 15                  // Length of recently used items list
+  consoleOutput = true                // Toggles log output if launched from command prompt
+  systemTheme = true                 // default is dark theme.... setting to false goes to Windows pallete for your PC
+  lockCamera = false                  // when set to true, it's the same as applying "." to lock the camera elevation
 
-#routeName = cmk
-#routeName = bbb
-#routeName = poznan_tram
-#routeName = bkd2
-#routeName = usa2l
-#routeName = www
-#routeName = traska
-#routeName = aaa
-#routeName = ICE-HB
-#routeName = tutorial
-#routeName = Warszawa - Kraków
-routeName = Reda-Hel_ver11
-#routeName = demo1
-#routeName = krkolk
+// mainWindowLayout = "PWT"              // Order of windows: P = Properties, T = Tools W = World
+                                         // Default is PWT -- TWP reverses
+                                         // Tools and Property -- omitting 
+                                         // floats tools in separate windows
+  
+ // mainWindow = 300, 30                    // X, Y of main windows and load window
+ // naviWindow = 0, 200                     // X, Y of Navigation window for RE
 
-# optional start tile
-#startTileX = -5439
-#startTileY = 14865
+legacySupport = false                  // enable retention of ViewDBSphere and VDBID when true 
+ 
+///////////////////////// Track Database and File Saving
+  autoFix = true                       // Automatically repair TDB anomalies
+  useOnlyPositiveQuaternions = false   // 
+  writeEnabled = true                  // set to false for read-only
+  writeTDB = true                      // set to manually decide what to add to TDB via Z key  
+  warningBox = true                    // Warn before exiting without a save
+  leaveTrackShapeAfterDelete = false   // Use only when deleting track/road but keeping TDB entry
 
-# route edit
-#createNewIfNotExist = true
-writeEnabled = true
-writeTDB = true
-#deleteTrWatermarks = true
-#deleteViewDbSpheres = true
 
-# geo data
-geoPath = C:/hgst
+//  sortTileObjects = true               // no idea what this does
+  snapableOnlyRot = false              // Allow free rotation
+  shadowsEnabled = true               // This can affect performance if true
+//  shadowMapSize = 2048
+//  shadowLowMapSize = 1024
+//  textureQuality = 1
+//  AASamples = 16
+//  deleteTrWatermarks = true            // removes detail not used by ORTS
+//  deleteViewDbSpheres = true           // removes detail not used by ORTS
+  useTdbEmptyItems = true              // Preserves UID numbering when deleting items from TDB
+//  useWorkingDir = false                // true will save to the TSRE folder
 
-# misc
-#systemTheme = true
-#colorConView = #FF0000
-#colorShapeView = #FFFFFF
-#toolsHidden = true
-usenNumPad = true
-tileLod = 2
-objectLod = 6000
-maxObjLag = 10
-allowObjLag = 1000
-fpsLimit = 0
-#cameraFov = 5.0
-warningBox = false
-leaveTrackShapeAfterDelete = false
-#renderTrItems = true
-useImperial = false
-#ortsEngEnable = false
-#oglDefaultLineWidth = 2
-shadowsEnabled = 1
-#textureQuality = 4
-#ignoreMissingGlobalShapes = true
-snapableOnlyRot = true
-imageMapsUrl = http://maps.googleapis.com/maps/api/staticmap?center={lat},{lon}&zoom={zoom}&size={res}x{res}&maptype=satellite&key=
-shadowLowMapSize = 2048
-#shadowMapSize = 8192
-shadowMapSize = 4096
-#AASamples = 8
-mapImageResolution = 4096
-#mapImageResolution = 8192
-cameraStickToTerrain = true
-proceduralTracks = true
-mouseSpeed = 0.5
-#mainWindowLayout = W
-#ceWindowLayout = CU1
-#useQuadTree = false
-fogColor = #D0D0FF
-fogDensity = 0.4
-fogColor = #5050AA
-fogDensity = 0.7
-#playerMode = true
-#useNetworkEng = true
-#soundEnabled = true
-#hudEnabled = true
-hudScale = 1.2
-defaultElevationBox = 0
-defaultMoveStep = 0.25
-#fullscreen = true
+
+///////////////////////////  Editing presets
+  trackElevationMaxPm = 100            // maximum grade permille 
+  defaultElevationBox = 0
+  defaultMoveStep = 0.25
+  renderTrItems = false                // Show the black boxes for TrItems
+  cameraStickToTerrain = true          // Stop camera from going underground, toggled with "/" key
+  wireLineHeight = 6.7          // V08.x  Yellow line height
+  sectionLineHeight = 5.0       // V08.x  Grey line height
+  selectedWidth = 2             // V08.x  Terrain selection line width
+  selectedColor = #B612FF       // V08.x  Terrain selection line color
+  selectedTerrWidth = 4         // V08.x  Terrain selection line width
+  selectedTerrColor = #FFB612   // V08.x  Terrain selection line color
+  terrainSize = 1               // V08.x  Terrain cut/fill size
+  terrainEmbankment = 5         // V08.x  Terrain embankment width
+  terrainCut = 5                // V08.x  Terrain cut width
+  terrainRadius = 9             // V08.x  Terrain cut/fill radius
+  terrainBrushSize = 1          // V08.x  Terrain adjustment brush size radius
+  terrainBrushIntensity = 10    // V08.x  Terrain adjustment intensity 1-100
+
+
+
+
+
+////////////////////  Layout and UI Settings
+//  mainWindowLayout =
+//  fullscreen = false                 // Prevents screen from being maximized
+//  ceWindowLayout =
+//  colorConView = "#FF0000"
+//  colorShapeView = "#00FF00"
+//  cameraSpeedMin = 1                 // Camera movement with CTRL
+//  cameraSpeedStd = 3                 // Camera movement normal
+//  cameraSpeedMax = 40                // Camera movement with SHIFT
+//  mouseSpeed =
+//  proceduralTracks = false           // Unfinished feature?
+soundEnabled = true               // Sound doesn't work, so....
+//  hudEnabled = TRUE                 //
+//  hudScale = 1                      // 
+//  season = ""                        // For editing winter/fall/spring/summer
+//  seasonalEditing = false            //
+
+
+//////////////////////////////  Map and Terrain Features
+//  mapImageResolution = 2048          // Image resolution for downloaded map imagery
+//  geoPath = ""                       // Drive and folder for HGT files
+//  Image Maps require a valid API key from either Google or MapBox
+//
+//  google           
+// imageMapsUrl = http://maps.googleapis.com/maps/api/staticmap?center={lat},{lon}&zoom={zoom}&size={res}x{res}&maptype=satellite&key=YourAPIToken
+//
+//  Mapbox Zoom value is hardcoded after lat/long... Z17 = 16    z18 = 17  -- See https://docs.mapbox.com/api/maps/static-images/ for other parameter options
+// MapBox Z18
+// imageMapsUrl = https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/{lon},{lat},17/{res}x{res}?access_token=YourAPIToken
+//
+// MapBox Z17
+imageMapsUrl = https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/{lon},{lat},16/{res}x{res}?access_token=YourAPIToken
+//
+////////////////////////////////////////////////// 
+
+
+
+//  routeMergeString = "route:X:Y:Z"   // For merging a second route with offsets X Y Z applied if 
+                                       // world geometry is not identicall
+//  objectsToRemove = ""               // Comma separated list of shapefiles to remove
+
+//////////////////////////////// Optional / Multi-player Features 
+//  fpsLimit = 59                      // for multi-player feature from 7.x
+//  serverAuth                         // for Client-server only, multi-player feature from 7.x
+//  createNewIfNotExist = true         //
+//  ortsEngEnable = false              // multi-player feature  from 7.x
+//  playerMode =                       // multi-player feature  from 7.x
+//  useNetworkEng = false              // for Client-server only, multi-player feature from 7.x
+//  fogDensity =
+//  fogColor =
+//  skyColor =
+//
+
+
+
+///////////////////////////// Consist and Shape Viewer
+// ortsEngEnable = true                // Give precedence to eng file settings in /OpenRails folders
+// ceWindowLayout = "C1"               // C - Consists, 1 = Main List,  2 = Second List, 
+                                       // U = List of Units within selected consist
+                                       // Default is C1 -- C1U may be more useful as you can 
+                                       // view without scrolling the entire left-right graphic list
+
+///////////////////////////  Deprecated Settings
+// useImperial = false                 // doesn't do anything anymore
