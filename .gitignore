@@ -17,13 +17,12 @@ dep.inc
 /nbproject/
 /nbproject/private/private.xml
 /nbproject/configurations.xml
-#/Dest/
+
+/Dest/
+/settings
 
 
-# Binaries
-# --------
-#*.dll
-#*.exe
+
 
 # This file is used to ignore files which are generated
 # ----------------------------------------------------------------------------
@@ -94,4 +93,8 @@ CMakeLists.txt.user*
 # Python byte code
 *.pyc
 
+# Binaries
+# --------
+*.dll
+*.exe
 
